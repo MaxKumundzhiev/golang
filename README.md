@@ -25,4 +25,11 @@ carType := "Wagon"
 
 // declaration with default value
 carFueled bool // default to False
+
+// declare variables as a group
+var (
+	ToBe   bool       = false
+	MaxInt uint64     = 1<<64 - 1
+	z      complex128 = cmplx.Sqrt(-5 + 12i)
+)
 ```
