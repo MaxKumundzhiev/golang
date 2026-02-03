@@ -56,4 +56,21 @@ func main() {
 	// var slice []int = []int{1, 2, 3, 4}
 	slice := []int{1, 2, 3, 4}
 	fmt.Println(sliceSum(slice))
+
+	/* 
+	anonymys function
+	might be defined without name
+	func (input: string) {
+		fmt.Println("im called and im anonymys")
+	} ("input to anon function")
+
+	or u can define to variable
+	printer := func (input: string) {
+		fmt.Println("im called and im anonymys")
+	}
+	
+	printer("input to anon function")
+	*/
+
+
 }
