@@ -24,9 +24,11 @@ when getting len of string, be aware ull get the cnt of bytes and not char thems
 for that u need
 
 Notes
-	- strings are enclosed with double quotes only
+	- strings are enclosed with double quotes only ("" not ''), cause '' for runes
 	- string may be empty, but not nil
 	- values of string type are immutable
+	- the zero value of a string is an empty string
+
 */
 
 
@@ -83,6 +85,15 @@ func main() {
 	fmt.Println(str3)
 	str3[0] = 'м'
 	fmt.Println(string(str3))
+
+	// convert slice of bytes to string
+	sb := []byte{72, 101, 108, 108, 111, 32, 65, 110, 100, 114, 195, 169, 33}
+	fmt.Println(sb)
+	str4 := string(sb)
+	fmt.Println(str4)
+
+	// ranging over string
+	...
 
 	// remove a char from string
 	// look up a char in string
