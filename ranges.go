@@ -1,12 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode/utf8"
+)
 
 /*
 range iterates over elements in a variety of data structures.
 
 
 Unknown type → use %v
+%c → prints the character represented by that number (for runes)
 Strings → %s
 Int → %d
 Float → %f
@@ -55,9 +59,28 @@ func TraverseOverString() {
 	}
 }
 
+func CountSymbolsInWord() {
+	// len(str) gives number of bytes
+	// utf8.RuneCountInString gives number of runes (characters)
+
+	sentence := "Привет Аркадий. Today hussling with Go :)"
+
+	symbols := utf8.RuneCountInString(sentence)
+	allocatedBytes := len(sentence)
+
+	for _, r := range sentence {
+		fmt.Printf("%d ", r)
+		fmt.Printf("%c\n", r)
+	}
+
+	fmt.Printf("Total symbols: %d\n", symbols)
+	fmt.Printf("Total bytes: %d\n", allocatedBytes)
+}
+
 
 func main() {
 	TraversalSumOverArrayLike()
 	TraversalLookUpOverMap()
 	TraverseOverString()
+	CountSymbolsInWord()
 }
