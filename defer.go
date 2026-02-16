@@ -1,7 +1,35 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
+// example of working with defer
+func ReadFile(filename string) error {
+	fmt.Println("opened file")
+	// read file
+	file, err := os.Open(filename)
+	if err != nil {
+		panic(err)
+	}
+	
+	// defer closing file
+	defer fmt.Println("closed file")
+	defer file.Close()
+
+	// read line by line
+	scanner := bufio.NewScanner(file)
+	
+	for scanner.Scan() {
+		line := scanner.Text()
+		fmt.Println(line)
+	}
+	
+	
+	return nil
+}
 
 func main() {
 	/*
@@ -28,11 +56,13 @@ func main() {
 		- handle panics and recover from them
 	*/
 
-	fmt.Println("start")
+	// fmt.Println("start")
 
-	defer fmt.Println("1st call")
-	defer fmt.Println("2nd call")
-	defer fmt.Println("3rd call")
+	// defer fmt.Println("1st call")
+	// defer fmt.Println("2nd call")
+	// defer fmt.Println("3rd call")
 
-	fmt.Println("end")
+	// fmt.Println("end")
+
+	ReadFile("/Users/macbook/Desktop/go.txt")
 }
