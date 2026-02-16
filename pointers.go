@@ -23,6 +23,28 @@ increase(&value)
 
 */
 
+/*
+func GetMaxIndex(values []int) 	--> real values, [1, 2, 3, 4]
+for idx, value := range values {
+	value --> value
+}
+
+func GetMaxIndex(values []*int) --> pointer to valuer, [address1, address2, address3, ...]
+for idx, value := range values {
+	value --> address of value, so, *value --> unpack it
+}
+
+func GetMaxIndex(values *[]int) --> pointer to slice, containing values
+for idx, value := range *values {
+	// but range values sould be unpacked
+	value --> value
+}
+
+[]int     — значения
+[]*int    — указатели
+*[]int    — указатель на slice
+*/
+
 import "fmt"
  
 func increase(value int) {
