@@ -31,6 +31,36 @@ func ReadFile(filename string) error {
 	return nil
 }
 
+
+func MimicReadFilesWithUnsafeScope(files []string) error {
+	/*
+	issue is that all files gonna be closed only after traversing all of them
+	// ❌ Опасность: все файлы закроются только после цикла!
+	*/
+	for _, filepath := range files {
+		file, err := os.Open(filepath)
+		if err != nil {
+			panic(err)
+		}
+		// do some work with file
+		defer file.Close()
+	}
+	return nil
+}
+
+func MimicReadFilesWithSafeScope(files []string) error {
+	for _, filepath := range files {
+		func() {
+			file, err := os.Open(filepath)
+			if err != nil {
+				panic(err)
+			}
+			// do some work with file
+			defer file.Close()  // ✅ Закроется сразу после итерации
+		}()
+	}
+}
+
 func main() {
 	/*
 	defer - отложить
@@ -65,4 +95,13 @@ func main() {
 	// fmt.Println("end")
 
 	ReadFile("/Users/macbook/Desktop/go.txt")
+	
+	/*
+	defer и возвращаемые значения
+	
+	func foo() (x int) {
+    	defer func() { x++ }()
+    	return 10 // Вернёт 11, т. к. defer изменяет именованное возвращаемое значение
+	}
+	*/
 }
