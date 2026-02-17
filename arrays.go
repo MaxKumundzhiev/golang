@@ -65,6 +65,20 @@ func main() {
 	fmt.Println(array)
 }
 
+
+
+practical example
+func RotateLeft(values [5]int, rotateFactor int) [5]int {
+	arrayLength = len(values)
+	shiftedArray := [5]int
+
+	for currIndex, value := values {
+		shiftedIndex = (currIndex - rotateFactor + lenght) % lenght
+		shiftedArray[shiftedIndex] = value
+	}
+
+	return shiftedArray
+}
 */
 
 func main() {
