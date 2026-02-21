@@ -43,11 +43,23 @@ func main() {
 
 	value := 500
 	squareValue(&value)
-}
 
+	fmt.Println(*initPerson())
+}
 
 
 func squareValue(val *int) {
 	*val *= *val
 	fmt.Println(val, *val)
+}
+
+
+type Person struct{
+	Name string
+	Age int
+}
+
+func initPerson() *Person {
+	m := Person{Name: "Max", Age: 29}
+	return &m
 }
